@@ -11,32 +11,32 @@ func (h *Handler) Routes() http.Handler {
 	fileServer := http.FileServer(neuteredFileSystem{http.Dir("./ui/static")})
 	mux.Handle("/static/", http.StripPrefix("/static/", fileServer))
 
-	mux.HandleFunc("/", h.home)
-	mux.HandleFunc("/login", h.login)
-	mux.HandleFunc("/register", h.register)
-	mux.Handle("/logout", h.requireAuthentication(http.HandlerFunc(h.logout)))
+	// mux.HandleFunc("/", h.home)
+	// mux.HandleFunc("/login", h.login)
+	// mux.HandleFunc("/register", h.register)
+	// mux.Handle("/logout", h.requireAuthentication(http.HandlerFunc(h.logout)))
 
-	mux.HandleFunc("/google/callback", h.handleGoogleCallback)
-	mux.HandleFunc("/google/login", h.handleGoogleLogin)
-	mux.HandleFunc("/github/login", h.handleGithubLogin)
-	mux.HandleFunc("/github/callback", h.handleGithubCallback)
+	// mux.HandleFunc("/google/callback", h.handleGoogleCallback)
+	// mux.HandleFunc("/google/login", h.handleGoogleLogin)
+	// mux.HandleFunc("/github/login", h.handleGithubLogin)
+	// mux.HandleFunc("/github/callback", h.handleGithubCallback)
 
-	mux.HandleFunc("/post/", h.showPost)
-	mux.HandleFunc("/posts", h.GetPosts)
-	mux.Handle("/lp", h.requireAuthentication(http.HandlerFunc(h.GetLikedPosts)))
+	// mux.HandleFunc("/post/", h.showPost)
+	// mux.HandleFunc("/posts", h.GetPosts)
+	// mux.Handle("/lp", h.requireAuthentication(http.HandlerFunc(h.GetLikedPosts)))
 
-	mux.HandleFunc("/postscat", h.showPostsByCategory)
-	mux.HandleFunc("/pc", h.GetPostsCat)
+	// mux.HandleFunc("/postscat", h.showPostsByCategory)
+	// mux.HandleFunc("/pc", h.GetPostsCat)
 
-	mux.Handle("/myposts", h.requireAuthentication(http.HandlerFunc(h.myposts)))
-	mux.Handle("/mp", h.requireAuthentication(http.HandlerFunc(h.GetMyPosts)))
+	// mux.Handle("/myposts", h.requireAuthentication(http.HandlerFunc(h.myposts)))
+	// mux.Handle("/mp", h.requireAuthentication(http.HandlerFunc(h.GetMyPosts)))
 
-	mux.Handle("/post/create", h.requireAuthentication(http.HandlerFunc(h.createPost)))
-	mux.Handle("/post/reaction", h.requireAuthentication(http.HandlerFunc(h.reactionPost)))
-	mux.Handle("/likedposts", h.requireAuthentication(http.HandlerFunc(h.likedPosts)))
+	// mux.Handle("/post/create", h.requireAuthentication(http.HandlerFunc(h.createPost)))
+	// mux.Handle("/post/reaction", h.requireAuthentication(http.HandlerFunc(h.reactionPost)))
+	// mux.Handle("/likedposts", h.requireAuthentication(http.HandlerFunc(h.likedPosts)))
 
-	mux.Handle("/comment/create", h.requireAuthentication(http.HandlerFunc(h.createComment)))
-	mux.Handle("/comment/reaction", h.requireAuthentication(http.HandlerFunc(h.reactionComment)))
+	// mux.Handle("/comment/create", h.requireAuthentication(http.HandlerFunc(h.createComment)))
+	// mux.Handle("/comment/reaction", h.requireAuthentication(http.HandlerFunc(h.reactionComment)))
 
 	return h.authenticate(mux)
 }

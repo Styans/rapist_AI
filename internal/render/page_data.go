@@ -11,6 +11,6 @@ type PageData struct {
 	AuthenticatedUser *models.User
 	Post              *models.Post
 	Posts             []*models.Post
-	Categories        []*models.Category
-	Comments          []*models.Comment
+	// Categories        []*models.Category
+	// Comments          []*models.Comment
 }

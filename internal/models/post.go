@@ -14,8 +14,8 @@ type Post struct {
 	CreatedAt  time.Time `json:"created_at"`
 	UpdatedAt  time.Time `json:"updated_at"`
 
-	Categories []*Category `json:"category_id"`
-	Comments   []*Comment  `json:"comments"`
+	// Categories []*Category `json:"category_id"`
+	// Comments   []*Comment  `json:"comments"`
 	Likes      int         `json:"likes"`
 	Dislikes   int         `json:"dislikes"`
 	ImagePath  string      `json:"image_path"`
@@ -25,7 +25,7 @@ type Post struct {
 type CreatePostDTO struct {
 	Title      string         `json:"title"`
 	Content    string         `json:"content"`
-	Categories []*Category    `json:"category_id"`
+	// Categories []*Category    `json:"category_id"`
 	Author     int            `json:"author"`
 	AuthorName string         `json:"authorname"`
 	ImageFile  multipart.File `json:"imagefile"`
