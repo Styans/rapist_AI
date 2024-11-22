@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mail</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    {% include 'header.html' %}
+    <!-- main -->
+     <main>
+        <div class="container">
+            <form action="{% url 'dynamic_page' page='start' %}">
+                <input type="email" name="" id="" placeholder="Введите email">   
+                <div class="button">
+                  <button class="login">Отправить код </button> 
+                </div>
+            </form> 
+        </div>
+     </main>
+</body>
+</html>

@@ -16,7 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from front import views  # Импорт вашего приложения и представлений
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.index, name='index'),  # Путь к главной странице
+       path('<str:page>/', views.dynamic_page, name='dynamic_page'),  # Динамические страницы
 ]
