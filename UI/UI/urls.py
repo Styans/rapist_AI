@@ -21,5 +21,7 @@ from front import views  # Импорт вашего приложения и п�
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),  # Путь к главной странице
-       path('<str:page>/', views.dynamic_page, name='dynamic_page'),  # Динамические страницы
+    path('<str:page>/', views.dynamic_page, name='dynamic_page'),  # Динамические страницы
+    path('get_question/<int:question_id>/', views.get_question, name='get_question'),
+
 ]

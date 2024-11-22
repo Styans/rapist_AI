@@ -27,5 +27,50 @@
             </div>
         </div>
     </main>
+    <!-- скрипты JS -->
+    <script>
+        let currentQuestion = 1;
+    
+        // Функция для загрузки вопроса
+        async function loadQuestion(questionId) {
+            try {
+                const response = await fetch(`/get_question/${questionId}/`);
+                const data = await response.json();
+    
+                if (data.error) {
+                    alert(data.error);
+                    return;
+                }
+    
+                // Обновляем текст вопроса
+                document.querySelector('label[for="response"]').textContent = `Вопрос ${data.current}: ${data.question}`;
+                // Обновляем прогресс
+                document.querySelector('.progress').textContent = `${data.current} / ${data.total}`;
+            } catch (error) {
+                console.error("Ошибка при загрузке вопроса:", error);
+            }
+        }
+    
+        // Обработчик для кнопки "Назад"
+        document.querySelector('button[type="button"]').addEventListener('click', () => {
+            if (currentQuestion > 1) {
+                currentQuestion--;
+                loadQuestion(currentQuestion);
+            }
+        });
+    
+        // Обработчик для кнопки "Отправить"
+        document.querySelector('button[type="submit"]').addEventListener('click', (event) => {
+            event.preventDefault(); // Предотвращаем отправку формы
+            if (currentQuestion < 10) { // Убедитесь, что здесь указан реальный максимум вопросов
+                currentQuestion++;
+                loadQuestion(currentQuestion);
+            }
+        });
+    
+        // Загрузка первого вопроса при открытии страницы
+        document.addEventListener('DOMContentLoaded', () => loadQuestion(currentQuestion));
+    </script>
+    
 </body>
 </html>
