@@ -1,5 +1,5 @@
 # Web Forum Project
-
+lol
 ## Overview
 This project is a web-based forum that allows communication between users, categorization of posts, and interaction through likes and dislikes. It's designed to be a platform for sharing ideas, discussions, and content within a community.
 
