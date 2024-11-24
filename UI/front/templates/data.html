@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>table</title>
+    <link rel="stylesheet" href="{% static 'data.css' %}">
+</head>
+<body>
+    {% include 'header.html' %}
+    <main>
+        <!DOCTYPE html>
+        <html lang="ru">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Тян Станислав</title>
+            <link rel="stylesheet" href="{% static 'data.css' %}">        
+        </head>
+        <body>
+            <div class="header">
+                <div class="profile">
+                    <img src="{% static '/img/image 1.png' %}" alt="Profile" class="profile-icon">
+                    <span class="profile-name">Тян Станислав</span>
+                </div>
+            </div>
+        
+            <div class="content">
+                <div class="search-bar">
+                    <input type="text" placeholder="🔍" class="search-input">
+                    <div class="filters">
+                        <label><input type="checkbox"> пройдено</label>
+                        <label><input type="checkbox"> проблема</label>
+                        <label><input type="checkbox"> решенные</label>
+                    </div>
+                </div>
+        
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Ф.И.О.</th>
+                            <th>номер</th>
+                            <th>пройдено/не пройдено</th>
+                            <th>проблема</th>
+                            <th>решение</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Иванов Алексей Сергеевич</td>
+                            <td>+7 123 456 78 89</td>
+                            <td>пройдено</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Петрова Мария Викторовна</td>
+                            <td>+7 123 456 78 89</td>
+                            <td>не пройдено</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Смирнов Дмитрий Николаевич</td>
+                            <td>+7 123 456 78 89</td>
+                            <td>не пройдено</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Кузнецова Елена Павловна</td>
+                            <td>+7 123 456 78 89</td>
+                            <td>пройдено</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Волков Сергей Игоревич </td>
+                            <td>+7 123 456 78 89</td>
+                            <td>не пройдено</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </body>
+        </html>
+    </main>
+</body>
+</html>
