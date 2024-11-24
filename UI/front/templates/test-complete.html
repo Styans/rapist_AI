@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>finish test</title>
+    <link rel="stylesheet" href="{% static 'test-finish.css' %}">
+</head>
+<body>
+    {% include 'header.html' %}
+    <main>
+        <div class="header">
+            <h1>Тестирование завершено</h1>
+        </div>
+        <div class="content">
+            <div class="card">
+                <h2>Психологический тест военнослужащего</h2>
+                <p>Ответ записан.</p>
+                <form action="{% url 'dynamic_page' page='index' %}">
+                    <button class="exit-button">Выйти</button>
+                 </form>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

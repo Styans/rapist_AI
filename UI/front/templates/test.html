@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>test</title>
+    <title>start test</title>
     <link rel="stylesheet" href="{% static 'test.css' %}">
 </head>
 <body>
@@ -30,6 +30,8 @@
     <!-- скрипты JS -->
     <script>
         let currentQuestion = 1;
+        const maxQuestions = 3; // Общее количество вопросов
+        const userAnswers = {}; // Объект для хранения ответов пользователя
     
         // Функция для загрузки вопроса
         async function loadQuestion(questionId) {
@@ -46,6 +48,9 @@
                 document.querySelector('label[for="response"]').textContent = `Вопрос ${data.current}: ${data.question}`;
                 // Обновляем прогресс
                 document.querySelector('.progress').textContent = `${data.current} / ${data.total}`;
+                // Очистка/восстановление поля ответа
+                const textarea = document.querySelector('#response');
+                textarea.value = userAnswers[questionId] || ""; // Восстанавливаем ответ, если есть
             } catch (error) {
                 console.error("Ошибка при загрузке вопроса:", error);
             }
@@ -54,6 +59,8 @@
         // Обработчик для кнопки "Назад"
         document.querySelector('button[type="button"]').addEventListener('click', () => {
             if (currentQuestion > 1) {
+                // Сохраняем текущий ответ перед переходом
+                saveCurrentAnswer();
                 currentQuestion--;
                 loadQuestion(currentQuestion);
             }
@@ -62,15 +69,35 @@
         // Обработчик для кнопки "Отправить"
         document.querySelector('button[type="submit"]').addEventListener('click', (event) => {
             event.preventDefault(); // Предотвращаем отправку формы
-            if (currentQuestion < 10) { // Убедитесь, что здесь указан реальный максимум вопросов
+
+            // Проверяем, заполнен ли ответ
+        const textarea = document.querySelector('#response');
+        if (textarea.value.trim() === "") {
+            alert("Пожалуйста, дайте ответ перед переходом к следующему вопросу.");
+            return;
+        }
+    
+            // Сохраняем текущий ответ перед переходом
+            saveCurrentAnswer();
+    
+            if (currentQuestion < maxQuestions) {
                 currentQuestion++;
                 loadQuestion(currentQuestion);
+            } else {
+                // Если это был последний вопрос, перенаправляем пользователя
+                window.location.href = "/test-complete/";
             }
         });
     
+        // Функция для сохранения текущего ответа
+        function saveCurrentAnswer() {
+            const textarea = document.querySelector('#response');
+            userAnswers[currentQuestion] = textarea.value.trim(); // Сохраняем ответ
+        }
+    
         // Загрузка первого вопроса при открытии страницы
         document.addEventListener('DOMContentLoaded', () => loadQuestion(currentQuestion));
-    </script>
-    
+    </script>   
+
 </body>
 </html>
